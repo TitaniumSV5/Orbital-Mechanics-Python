@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 from scipy.integrate import ode
 from mpl_toolkits.mplot3d import Axes3D
 
-alt = float(input("Enter orbit altitude in km: "))
+alt = float(input("Enter altitude in km: "))
+sim = float(input("Enter simulation time in mins: "))
 
 def plot(r):
     
@@ -37,8 +38,8 @@ def plot(r):
     plt.show()
     
     
-earth_radius=6378.0
-earth_mu=398600.0
+earth_radius=6378.137
+earth_mu=398600.4418
 
 def diffy_q(t,y,mu):
 
@@ -59,7 +60,7 @@ if __name__ == '__main__':
     r0=[r_mag,0,0]
     v0=[0,v_mag,0]
     
-    tspan=110*60.0
+    tspan=sim*60.0
     dt=100.0
     
     n_steps=int(np.ceil(tspan/dt))
